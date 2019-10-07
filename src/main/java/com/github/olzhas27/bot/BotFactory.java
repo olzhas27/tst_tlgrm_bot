@@ -7,6 +7,8 @@ import org.telegram.telegrambots.meta.ApiContext;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -24,7 +26,8 @@ public class BotFactory {
         botOptions.setProxyPort(port);
         // Select proxy type: [HTTP|SOCKS4|SOCKS5] (default: NO_PROXY)
         botOptions.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
-        try (InputStream is = Bot.class.getClassLoader().getResourceAsStream("credentials.properties")) {
+        val pathToCredentialsFile = Paths.get(props.getProperty("credentials.file", "credentials.properties")).toAbsolutePath();
+        try (InputStream is = Files.newInputStream(pathToCredentialsFile)) {
             props.load(is);
         } catch (IOException e) {
             throw new UncheckedIOException(e);
