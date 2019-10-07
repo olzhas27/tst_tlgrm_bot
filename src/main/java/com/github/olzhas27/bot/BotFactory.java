@@ -24,6 +24,11 @@ public class BotFactory {
         botOptions.setProxyPort(port);
         // Select proxy type: [HTTP|SOCKS4|SOCKS5] (default: NO_PROXY)
         botOptions.setProxyType(DefaultBotOptions.ProxyType.SOCKS5);
+        try (InputStream is = Bot.class.getClassLoader().getResourceAsStream("credentials.properties")) {
+            props.load(is);
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
         val name = props.getProperty("bot.name");
         val token = props.getProperty("bot.token");
         Objects.requireNonNull(name);
