@@ -1,5 +1,6 @@
 package com.github.olzhas27.bot;
 
+import com.github.olzhas27.bot.config.BotCredentials;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
@@ -10,21 +11,21 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @Slf4j
 public class Bot extends TelegramLongPollingBot {
-    private final String name;
-    private final String token;
+    private final BotCredentials credentials;
 
-    Bot(String name, String token, DefaultBotOptions options) {
+    Bot(BotCredentials credentials, DefaultBotOptions options) {
         super(options);
-        this.name = name;
-        this.token = token;
+        this.credentials = credentials;
     }
 
-    public String getBotToken() {
-        return token;
-    }
-
+    @Override
     public String getBotUsername() {
-        return name;
+        return credentials.getUserName();
+    }
+
+    @Override
+    public String getBotToken() {
+        return credentials.getToken();
     }
 
     public void onUpdateReceived(Update update) {

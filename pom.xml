@@ -13,7 +13,7 @@
         <encoding>UTF-8</encoding>
 
         <lombok.version>1.18.10</lombok.version>
-        <telegrambots.version>4.4.0.1</telegrambots.version>
+        <telegrambots.version>4.7</telegrambots.version>
         <slf4j-api.version>1.7.28</slf4j-api.version>
         <logback-classic.version>1.2.3</logback-classic.version>
 
@@ -40,7 +40,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j-api.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -90,7 +90,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.github.olzhas27.Main</mainClass>
+                                    <mainClass>com.github.olzhas27.TestTelegarmBotApp</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

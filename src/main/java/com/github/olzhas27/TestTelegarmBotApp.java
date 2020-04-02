@@ -8,10 +8,10 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 @Slf4j
-public class Main {
+public class TestTelegarmBotApp {
     public static void main(String[] args) {
-        val telegramBotsApi = new TelegramBotsApi();
         ApiContextInitializer.init();
+        val telegramBotsApi = new TelegramBotsApi();
         try {
             val botSession = telegramBotsApi.registerBot(BotFactory.newBot());
         } catch (TelegramApiRequestException e) {
