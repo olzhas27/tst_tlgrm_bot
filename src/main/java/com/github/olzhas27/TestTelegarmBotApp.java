@@ -13,7 +13,7 @@ public class TestTelegarmBotApp {
         ApiContextInitializer.init();
         val telegramBotsApi = new TelegramBotsApi();
         try {
-            val botSession = telegramBotsApi.registerBot(BotFactory.newBot());
+            val botSession = telegramBotsApi.registerBot(BotFactory.newParrotBot());
         } catch (TelegramApiRequestException e) {
             log.error("Some errors", e);
         }

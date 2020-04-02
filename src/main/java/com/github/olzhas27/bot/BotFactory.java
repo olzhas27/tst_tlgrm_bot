@@ -9,7 +9,7 @@ import org.telegram.telegrambots.meta.ApiContext;
 
 @Slf4j
 public class BotFactory {
-    public static ParrotBot newBot() {
+    public static ParrotBot newParrotBot() {
         val credentials = BotCredentials.DEFAULT;
         val botOptions = getBotOptions();
         return new ParrotBot(credentials, botOptions);
